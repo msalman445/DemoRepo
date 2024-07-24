@@ -1,0 +1,29 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Base.Theme.NotePad" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="android:statusBarColor">@color/theme</item>
+
+        <!-- Customize your light theme here. -->
+        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+    </style>
+
+    <style name="FloatingButton"  parent="Widget.MaterialComponents.FloatingActionButton">
+        <item name="colorOnSecondary">@color/white</item>
+    </style>
+    <style name="Theme.NotePad" parent="Base.Theme.NotePad" />
+
+    <style name="App.ToolbarStyle" parent="ThemeOverlay.MaterialComponents.Toolbar.Primary">
+        <item name="colorOnPrimary">@color/colorprimary</item>
+    </style>
+
+    <style name="MyRatingBar" parent="Widget.AppCompat.RatingBar">
+
+<!--        Non_selected stars color.-->
+        <item name="colorControlNormal">#4D000000</item>
+
+<!--        Selected stars color.-->
+        <item name="colorControlActivated">@color/rate_dlg_color_first</item>
+
+    </style>
+
+</resources>

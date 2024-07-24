@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="red">#F1384D</color>
+
+    <color name="color1">#F19595</color>
+    <color name="color2">#6CB5EF</color>
+    <color name="color3">#E18669</color>
+    <color name="color4">#86E48A</color>
+    <color name="color5">#E1D678</color>
+
+
+    <color name="theme">#235B88</color>
+
+    <color name="light">#E9EDEF</color>
+    <color name="dark">#000000</color>
+
+
+    <color name="rate_dlg_color_first">#E3D23F</color>
+    <color name="rate_dlg_color_second">#45D7EA</color>
+
+</resources>

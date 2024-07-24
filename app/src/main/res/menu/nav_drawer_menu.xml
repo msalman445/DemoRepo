@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn = "navigation_view">
+
+    <group>
+        <item
+            android:id="@+id/nav_home"
+            android:title="Home"
+            android:icon="@drawable/home"/>
+
+        <item
+            android:id="@+id/nav_favourite"
+            android:title="Favourites"
+            android:icon="@drawable/favourites"/>
+
+        <item
+            android:id="@+id/nav_setting"
+            android:title="Settings"
+            android:icon="@drawable/settings"/>
+
+        <item
+            android:id="@+id/nav_share"
+            android:title="Share"
+            android:icon="@drawable/share"/>
+
+    </group>
+
+
+    <item
+        android:title="System"
+        >
+        <menu>
+            <item
+                android:id="@+id/nav_privacyPolicy"
+                android:title="Privacy Ploicy"
+                android:icon="@drawable/privacy_policy"/>
+
+            <item
+                android:id="@+id/nav_aboutUs"
+                android:title="About Us"
+                android:icon="@drawable/aboutus"/>
+
+            <item
+                android:id="@+id/nav_rateUs"
+                android:title="Rate Us"
+                android:icon="@drawable/rate_us"/>
+
+        </menu>
+    </item>
+
+    <item
+        android:title="More">
+        <menu>
+            <item
+                android:id="@+id/nav_profile"
+                android:title="Profile"
+                android:icon="@drawable/profile"/>
+
+            <item
+                android:id="@+id/nav_logout"
+                android:title="Logout"
+                android:icon="@drawable/logout"/>
+        </menu>
+    </item>
+
+
+</menu>
