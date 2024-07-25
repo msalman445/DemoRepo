@@ -20,6 +20,8 @@ public class DB extends SQLiteOpenHelper {
     public static final int DB_VERSION = 9;
 
 
+
+
     private DB(Context context){
         super(context, DB_NAME, null, DB_VERSION);
     }

@@ -48,6 +48,9 @@ public class Notes {
 
 
 
+
+
+
     public Notes(int noteId, String title, String note, String date, boolean favourite, boolean thrash) {
         this.noteId = noteId;
         this.title = title;

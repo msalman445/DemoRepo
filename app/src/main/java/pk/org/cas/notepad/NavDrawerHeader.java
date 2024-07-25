@@ -30,5 +30,7 @@ public class NavDrawerHeader extends AppCompatActivity {
         tvUserName.setText(name);
         tvEmail.setText(email);
 
+
+
     }
 }
