@@ -133,6 +133,7 @@ public class OpenNote extends AppCompatActivity {
                     String note = String.valueOf(etOpen_Note.getText());
                     Notes notes1 = new Notes(id,title, note);
                     favouriteNotesList.add(notes1);
+                    db.deleteNote(notes.get(position).getNoteId());
                     Toast.makeText(OpenNote.this, "Favourite", Toast.LENGTH_SHORT).show();
                     isNotFavourite = false;
                 }else {

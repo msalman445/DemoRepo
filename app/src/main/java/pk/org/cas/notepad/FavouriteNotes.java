@@ -45,10 +45,6 @@ public class FavouriteNotes extends AppCompatActivity {
                 finish();
             }
         });
-
-
-
-
-
     }
 }
+

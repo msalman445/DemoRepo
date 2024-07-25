@@ -23,13 +23,18 @@ import androidx.core.view.WindowInsetsCompat;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.List;
 
 public class Profile extends AppCompatActivity {
-    private Uri capturedImageUri;
     ImageView ivPhoto, ivBack;
     EditText etName, etEmail;
-    AppCompatButton btnSaveProfile;
-    private static final int REQUEST_IMAGE_CAPTURE = 123;
+    AppCompatButton btnSaveProfile, btnAddPic;
+
+    private static final int REQUEST_CODE_IMAGE_CAPTURE = 123;
+    private Uri imagePath;
+    private Bitmap imageToStore;
+
+    DB db = DB.getInstance(this);
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -41,7 +46,8 @@ public class Profile extends AppCompatActivity {
         etName = findViewById(R.id.etProfileUsername);
         etEmail = findViewById(R.id.etProfileEmail);
         btnSaveProfile = findViewById(R.id.btnProfileSave);
-
+        btnAddPic = findViewById(R.id.btnAddPic);
+        DB db = DB.getInstance(this);
 
         ivBack.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -51,35 +57,72 @@ public class Profile extends AppCompatActivity {
         });
 
 
-        ivPhoto.setOnClickListener(new View.OnClickListener() {
+        btnSaveProfile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-                if(intent.resolveActivity(getPackageManager()) != null){
-                    startActivityForResult(intent, REQUEST_IMAGE_CAPTURE);
+                String name = etName.getText().toString();
+                String email = etEmail.getText().toString();
+                if(imageToStore == null){
+                    Toast.makeText(Profile.this, "Null", Toast.LENGTH_SHORT).show();
+                }else{
+                    Toast.makeText(Profile.this, "Not Null", Toast.LENGTH_SHORT).show();
                 }
+
+                User user = new User(name, email, imageToStore);
+                if(db.insertUser(user)){
+                    Toast.makeText(Profile.this, "Profile Saved.", Toast.LENGTH_SHORT).show();
+                }
+
+
+
+
+//                if(db.fetchUsers().isEmpty()){
+//                    User user = new User(name, email, imageToStore);
+//                    if(db.insertUser(user)){
+//                        Toast.makeText(Profile.this, "Profile Saved.", Toast.LENGTH_SHORT).show();
+//                    }else{
+//                        Toast.makeText(Profile.this, "Not Profile Saved.", Toast.LENGTH_SHORT).show();
+//                    }
+//                }else {
+//                    int id = 2;
+//                    User user1 = new User(id, name, email, imageToStore);
+//                    if(db.updateUser(user1)){
+//                        Toast.makeText(Profile.this, "profile saved.", Toast.LENGTH_SHORT).show();
+//                    }else{
+//                        Toast.makeText(Profile.this, "not profile saved.", Toast.LENGTH_SHORT).show();
+//                    }
+//                }
             }
         });
 
 
-        btnSaveProfile.setOnClickListener(new View.OnClickListener() {
+        btnAddPic.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(Profile.this, MainActivity.class);
-//                intent.putExtra("pic", ivPhoto);
-                intent.putExtra("name", etName.getText().toString());
-                intent.putExtra("email", etEmail.getText().toString());
-                startActivity(intent);
-                Toast.makeText(Profile.this, "Profile Saved.", Toast.LENGTH_SHORT).show();
+                try {
+                    Intent intent = new Intent();
+                    intent.setType("image/*");
+                    intent.setAction(Intent.ACTION_GET_CONTENT);
+                    startActivityForResult(intent, REQUEST_CODE_IMAGE_CAPTURE);
+                }catch (Exception ex){
+                    Toast.makeText(Profile.this, ex.getMessage(), Toast.LENGTH_SHORT).show();
+                }
             }
         });
     }
 
     @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if(requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK){
-            ivPhoto.setImageBitmap(data.getParcelableExtra("data"));
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) { //it holds the image in IV after image is selected.
+        try {
+            super.onActivityResult(requestCode, resultCode, data);
+            if(requestCode==REQUEST_CODE_IMAGE_CAPTURE && resultCode==RESULT_OK){
+                imagePath = data.getData();
+                imageToStore = MediaStore.Images.Media.getBitmap(getContentResolver(), imagePath);
+                ivPhoto.setImageBitmap(imageToStore);
+
+            }
+        }catch (Exception ex){
+            Toast.makeText(Profile.this, ex.getMessage(), Toast.LENGTH_SHORT).show();
         }
     }
 }

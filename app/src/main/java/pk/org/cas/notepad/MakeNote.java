@@ -37,7 +37,7 @@ public class MakeNote extends AppCompatActivity {
         ivBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                onBackPressed();
+                finish();
                 Toast.makeText(MakeNote.this, "BaCK", Toast.LENGTH_SHORT).show();
             }
         });
@@ -52,7 +52,7 @@ public class MakeNote extends AppCompatActivity {
 
 
                 Toast.makeText(MakeNote.this, "Note is Saved.", Toast.LENGTH_SHORT).show();
-                onBackPressed();
+                finish();
             }
         });
     }

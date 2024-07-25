@@ -5,7 +5,9 @@ import android.app.Activity;
 import android.app.Dialog;
 import android.content.Intent;
 import android.content.pm.ApplicationInfo;
+import android.database.Cursor;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Parcelable;
@@ -68,7 +70,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(MainActivity.this, MakeNote.class);
                 startActivity(intent);
-                Toast.makeText(MainActivity.this, "Moving to Make note Activity.", Toast.LENGTH_SHORT).show();
+//                Toast.makeText(MainActivity.this, "Moving to Make note Activity.", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -151,12 +153,18 @@ public class MainActivity extends AppCompatActivity {
         tvUserName = headerView.findViewById(R.id.tvUsername);
         tvEmail = headerView.findViewById(R.id.tvEmail);
 
-        String name = getIntent().getStringExtra("name");
-        String email = getIntent().getStringExtra("email");
-        if(name!=null && email!=null){
-            tvUserName.setText(name);
-            tvEmail.setText(email);
-        }
+//        String name = db.fetchLastUser().getName().toString();
+//        String email = db.fetchLastUser().getEmail().toString();
+//        tvUserName.setText(name);
+//        tvEmail.setText(email);
+
+//        User user = db.fetchUser(1);
+//        tvUserName.setText(user.getName().toString());
+//        tvEmail.setText(user.getEmail().toString());
+
+
+
+
     }
 
 

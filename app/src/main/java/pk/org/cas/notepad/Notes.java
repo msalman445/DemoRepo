@@ -22,9 +22,9 @@ public class Notes {
     public static final String COL_DATE = "Date";
 
     public static final String CREATE_TABLE = String.format("CREATE TABLE IF NOT EXISTS %s (%s INTEGER PRIMARY KEY AUTOINCREMENT, %s TEXT, %s TEXT)", TABLE_NAME, COL_NOTE_ID, COL_TITLE, COL_NOTE);
-
     public static final String DROP_TABLE = "DROP TABLE IF EXISTS "+TABLE_NAME;
     public static final String SELECT_ALL_NOTES = "SELECT * FROM "+TABLE_NAME;
+
     // Constructors.
     public Notes() {
     }
@@ -45,6 +45,8 @@ public class Notes {
         this.note = note;
         this.date = date;
     }
+
+
 
     public Notes(int noteId, String title, String note, String date, boolean favourite, boolean thrash) {
         this.noteId = noteId;
