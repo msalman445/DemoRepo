@@ -31,6 +31,8 @@ public class OpenNote extends AppCompatActivity {
     EditText etOpen_Title, etOpen_Note;
     DB db = DB.getInstance(this);
     boolean isNotFavourite = true;
+    int a = 5;
+
 
     List<Notes> favouriteNotesList = new ArrayList<>();
 
